@@ -1,5 +1,51 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    
+}
+
+:root {
+    --button-color: #321D71;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 60px;
+
+}
+
+.nav {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+.quiz-area {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 40px;
+    text-align: center;
+    line-height: 2;
+    align-items: center;
+}
+
+.header {
+    font-size: 40px;
+    letter-spacing: 1px;
+}
+
+.main-text {
+    font-size: 20px;
+}
+
+.start-btn {
+    margin-top: 30px;
+    width: 10%;
+    padding: 10px 20px;
+    background-color: var(--button-color);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
 }
