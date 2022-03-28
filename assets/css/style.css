@@ -21,7 +21,7 @@
     font-size: 20px;
 }
 
-.quiz-area {
+#quiz-area {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -31,16 +31,16 @@
     align-items: center;
 }
 
-.header {
+#header {
     font-size: 40px;
     letter-spacing: 1px;
 }
 
-.main-text {
+#text-main {
     font-size: 20px;
 }
 
-.start-btn {
+#start-btn {
     margin-top: 30px;
     width: 10%;
     padding: 10px 20px;
@@ -49,3 +49,4 @@
     color: #fff;
     font-size: 20px;
 }
+
