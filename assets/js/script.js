@@ -32,8 +32,16 @@ function startQuiz() {
     getFunction();
 };
 
+function clearArea() {
+    var quizAreaEl = document.querySelector(".question-area");
+    quizAreaEl.remove();
+
+    getFunction();
+}
+
 // Gets question for the test
 function getFunction() {
+
     // creates new div
     var newDiv = document.createElement("div");
     newDiv.className = "question-area";
@@ -49,8 +57,6 @@ function getFunction() {
     newDiv.appendChild(newQuestion);
 
     currentQuestion.options.forEach(function(choice, i){
-        console.log(choice);
-        console.log(i);
         var buttonOption = document.createElement("button");
         buttonOption.setAttribute("id", choice);
         buttonOption.textContent = choice;
@@ -62,15 +68,30 @@ function getFunction() {
 
 
 function questionCheck() {
+    var answer = document.createElement("h3");
+    answer.className = "answer";
+    var quizDivEl = document.querySelector(".question-area");
+
+
     if (this.id === questionsArray[questionNumber].answer) {
-        var wrongAnswer = document.createElement("h3");
-        wrongAnswer.className = "answer";
-        wrongAnswer.textContent = "Correct";
-        var quizDivEl = document.querySelector(".question-area");
-        quizDivEl.appendChild(wrongAnswer);
-        console.log("Correct");
+        answer.textContent = "Correct";
+        quizDivEl.appendChild(answer);
     } else {
-        console.log("Wrong");
+        answer.textContent = "Wrong";
+        quizDivEl.appendChild(answer);
     }
+
+    questionNumber++;
+    if (questionNumber === questionsArray.length) {
+
+    } else {
+
+        clearArea();
+    }
+
+};
+
+function removeCheck() {
+    
 };
 startbtnEl.onclick = startQuiz;
