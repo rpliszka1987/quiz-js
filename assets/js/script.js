@@ -20,6 +20,8 @@ var questionsArray = [{
 var startbtnEl = document.querySelector("#start-btn");
 var mainPageArea = document.querySelector(".main-area");
 var displayAreaEl = document.querySelector("#quiz-area");
+var timer = questionsArray.length * 15;
+var score = questionsArray.length * 10;
 
 var questionNumber = 0;
 
@@ -29,6 +31,7 @@ function startQuiz() {
     // removes all the text
     displayAreaEl.remove();
 
+    
     getFunction();
 };
 
@@ -37,6 +40,13 @@ function clearArea() {
     quizAreaEl.remove();
 
     getFunction();
+}
+
+function timerChange() {
+    var timeEl = document.querySelector("#timer");
+    timer--;
+    timeEl.textContent = timer;
+
 }
 
 // Gets question for the test
@@ -79,10 +89,17 @@ function questionCheck() {
     } else {
         answer.textContent = "Wrong";
         quizDivEl.appendChild(answer);
+        score -= 10;
     }
+
+    console.log(score);
 
     questionNumber++;
     if (questionNumber === questionsArray.length) {
+        var quizAreaEl = document.querySelector(".question-area");
+        quizAreaEl.remove();
+        console.log("end");
+        endGame();
 
     } else {
 
@@ -91,7 +108,15 @@ function questionCheck() {
 
 };
 
-function removeCheck() {
+function endGame() {
     
-};
+    var endScreenEl = document.createElement("div");
+    endScreenEl.className = "end-game";
+    mainPageArea.appendChild(endScreenEl);
+    var endScore = document.createElement("h2");
+    endScore.textContent = "Your score is: " + score;
+    endScreenEl.appendChild(endScore);
+
+
+}
 startbtnEl.onclick = startQuiz;
