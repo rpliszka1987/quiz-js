@@ -50,3 +50,37 @@
     font-size: 20px;
 }
 
+.question-area {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 35px;
+}
+
+.question-style {
+    padding: 20px 40px;
+}
+
+.button-style {
+    width: 20%;
+    margin: 10px 20px;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: var(--button-color);
+    color:#fff;
+    border-radius: 10px;
+    
+}
+
+.button-style:hover {
+    color: red;
+}
+
+.answer {
+    color: gray;
+    font-size: 25px;
+    margin-top: 15px;
+}
+

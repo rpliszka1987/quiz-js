@@ -18,26 +18,59 @@ var questionsArray = [{
 }]
 
 var startbtnEl = document.querySelector("#start-btn");
-var headerEl = document.querySelector("#header");
-var headerParagraphEl = document.querySelector("#text-main");
+var mainPageArea = document.querySelector(".main-area");
 var displayAreaEl = document.querySelector("#quiz-area");
+
 var questionNumber = 0;
 
 
-
+// starts the quiz
 function startQuiz() {
-    // Clears the main loaded screen
-    startbtnEl.setAttribute("style", "display:none");
-    headerEl.setAttribute("style", "display: none");
-    headerParagraphEl.setAttribute("style", "display: none");
+    // removes all the text
+    displayAreaEl.remove();
 
     getFunction();
-}
+};
 
-
-
+// Gets question for the test
 function getFunction() {
-    
-}
+    // creates new div
+    var newDiv = document.createElement("div");
+    newDiv.className = "question-area";
+    mainPageArea.appendChild(newDiv);
 
-startbtnEl.addEventListener("click", startQuiz);
+    // retrives the question
+    var currentQuestion = questionsArray[questionNumber];
+
+    // Adds question to the page
+    var newQuestion = document.createElement("p");
+    newQuestion.className = "question-style";
+    newQuestion.textContent = currentQuestion.question;
+    newDiv.appendChild(newQuestion);
+
+    currentQuestion.options.forEach(function(choice, i){
+        console.log(choice);
+        console.log(i);
+        var buttonOption = document.createElement("button");
+        buttonOption.setAttribute("id", choice);
+        buttonOption.textContent = choice;
+        buttonOption.className = "button-style";
+        newDiv.appendChild(buttonOption);
+        buttonOption.onclick = questionCheck;   
+    });  
+};
+
+
+function questionCheck() {
+    if (this.id === questionsArray[questionNumber].answer) {
+        var wrongAnswer = document.createElement("h3");
+        wrongAnswer.className = "answer";
+        wrongAnswer.textContent = "Correct";
+        var quizDivEl = document.querySelector(".question-area");
+        quizDivEl.appendChild(wrongAnswer);
+        console.log("Correct");
+    } else {
+        console.log("Wrong");
+    }
+};
+startbtnEl.onclick = startQuiz;
