@@ -22,6 +22,7 @@ var startbtnEl = document.querySelector("#start-btn");
 var mainPageArea = document.querySelector(".main-area");
 var displayAreaEl = document.querySelector("#quiz-area");
 
+
 var timer = questionsArray.length * 15;
 var score = questionsArray.length * 10;
 
@@ -32,8 +33,6 @@ var questionNumber = 0;
 function startQuiz() {
     // removes all the text
     displayAreaEl.remove();
-
-    
     getFunction();
 };
 
@@ -53,7 +52,6 @@ function timerChange() {
 
 // Gets question for the test
 function getFunction() {
-
 
     // creates new div
     var newDiv = document.createElement("div");
@@ -131,12 +129,19 @@ function endGame() {
 
 };
 
+function clearScreen(){
+    var endQuizEl = document.querySelector(".end-game");
+    endQuizEl.remove();
+
+    startQuiz();
+}
+
 function resetGame(){
     questionNumber = 0;
     score = questionsArray.length * 10;
     timer = questionsArray.length * 15;
 
-    getFunction();
+    clearScreen();
 
 };
 
