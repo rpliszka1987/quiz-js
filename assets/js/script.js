@@ -16,10 +16,12 @@ var questionsArray = [{
     options: ["1998", "2001", "1995", "1996"],
     answer: "1995"
 }]
+var highScores = [];
 
 var startbtnEl = document.querySelector("#start-btn");
 var mainPageArea = document.querySelector(".main-area");
 var displayAreaEl = document.querySelector("#quiz-area");
+
 var timer = questionsArray.length * 15;
 var score = questionsArray.length * 10;
 
@@ -51,6 +53,7 @@ function timerChange() {
 
 // Gets question for the test
 function getFunction() {
+
 
     // creates new div
     var newDiv = document.createElement("div");
@@ -99,6 +102,7 @@ function questionCheck() {
         var quizAreaEl = document.querySelector(".question-area");
         quizAreaEl.remove();
         console.log("end");
+        var playerName = prompt("Please enter your name:");
         endGame();
 
     } else {
@@ -116,7 +120,26 @@ function endGame() {
     var endScore = document.createElement("h2");
     endScore.textContent = "Your score is: " + score;
     endScreenEl.appendChild(endScore);
+    var resetButton = document.createElement("button");
+    resetButton.className = "start-btn";
+    resetButton.textContent = "Play Again";
+    resetButton.setAttribute("id", "reset-btn");
+    endScreenEl.appendChild(resetButton);
 
+    var resetButtonEl = document.querySelector("#reset-btn");
+    resetButtonEl.onclick = resetGame;
 
-}
+};
+
+function resetGame(){
+    questionNumber = 0;
+    score = questionsArray.length * 10;
+    timer = questionsArray.length * 15;
+
+    getFunction();
+
+};
+
 startbtnEl.onclick = startQuiz;
+
+
